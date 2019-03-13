@@ -1,6 +1,7 @@
 package com.guiyunli.rxjava;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -27,7 +28,7 @@ public class MainActivity extends Activity {
         btn_transfer.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-                                                EventBus.getDefault().register(this);
+                                                startActivity(new Intent(MainActivity.this, SecondActivity.class));
                                             }
                                         }
         );
@@ -48,8 +49,46 @@ public class MainActivity extends Activity {
             packageLogistics();
             calculateLogisticsAmount();
         }
+
+        System.out.println("MainActivity生命周期onCreate");
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        System.out.println("MainActivity生命周期onStart");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        System.out.println("MainActivity生命周期onRestart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.out.println("MainActivity生命周期onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        System.out.println("MainActivity生命周期onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        System.out.println("MainActivity生命周期onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.out.println("MainActivity生命周期onDestroy");
+    }
 
     class ProxySellFisher implements InvocationHandler {
         @Override

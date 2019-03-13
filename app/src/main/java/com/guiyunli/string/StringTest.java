@@ -7,7 +7,9 @@ package com.guiyunli.string;
  **/
 public class StringTest {
     public static void main(String[] args) {
-        testEquals();
+        StringBuilderTest();
+        StringBufferTest();
+        StringTest();
     }
 
     /**
@@ -52,4 +54,33 @@ public class StringTest {
         System.out.println("g==i的值是" + (g == i)); //false
         System.out.println("g.equals(i)的值是" + (g.equals(i)));//true
     }
+
+    private static void StringBuilderTest() {
+        StringBuilder builder = new StringBuilder();
+        System.out.println("数据Builder打印钱" + System.currentTimeMillis());
+        for (int i = 0; i < 100000000; i++) {
+            builder.append(i);
+        }
+        System.out.println("数据Builder打印后" + System.currentTimeMillis());
+    }
+
+
+    private static void StringBufferTest() {
+        StringBuffer builder = new StringBuffer();
+        System.out.println("数据Buffer打印钱" + System.currentTimeMillis());
+        for (int i = 0; i < 10000000; i++) {
+            builder.append(i);
+        }
+        System.out.println("数据Buffer打印后" + System.currentTimeMillis());
+    }
+
+    private static void StringTest() {
+        String builder = new String();
+        System.out.println("数据String打印钱" + System.currentTimeMillis());
+        for (int i = 0; i < 10000; i++) {
+            builder += i;
+        }
+        System.out.println("数据String打印后" + System.currentTimeMillis());
+    }
+
 }
